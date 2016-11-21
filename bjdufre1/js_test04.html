@@ -1,0 +1,59 @@
+<!doctype html>
+<!-- file: js_test04.html
+-->
+<html>
+
+    <body>
+
+        <p id="zippy" onClick="myAlert();">Click this for an alert!</p>
+
+        <script>
+
+            confirm("Do you want to continue to the webpage?");
+
+            var name = prompt("Please enter your name", "John Doe");
+
+            if(name == 'Brady Dufresne'){
+                document.write("Hey you're pretty cool</br>")
+            }
+
+            // alert()
+            function myAlert() {
+                alert("Here is an alert!");
+            }
+
+
+            // Math.abs()
+            var a = -25;
+            var b = 25;
+            if (Math.abs(a) == Math.abs(b))
+                document.write("<br />values a and b have same absolute value");
+
+            // Math.isNaN
+            document.write("</br>is 123 NaN? " + isNaN(123));
+            document.write("</br>is abc NaN? " + isNaN('abc') + "</br>");
+
+            //Floor and Ceil
+            document.write("The floor of 1.5 is: " + Math.floor(1.5) + "</br>");
+            document.write("The ceil of 1.5 is: " + Math.ceil(1.5) + "</br>");
+
+            //max and min
+            document.write("The max of 1 and 10 is: " + Math.max(1,10) + "</br>");
+            document.write("The min of 1 and 10 is: " + Math.min(1,10) + "</br>");
+
+            //Math.pow
+            document.write("2 to the 3rd power is: " + Math.pow(2,3) + "</br>");
+
+            //Math.round
+            document.write("3.5 rounded is: " + Math.round(3.5) + "</br>");
+            document.write("3.4 rounded is: " + Math.round(3.4) + "</br>");
+
+            //Math.sqrt
+            document.write("The square root of 4 is: " + Math.sqrt(4));
+
+
+        </script>
+
+    </body>
+
+</html>

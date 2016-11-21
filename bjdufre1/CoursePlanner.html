@@ -1,0 +1,196 @@
+<!doctype html>
+<!-- Course planner program for cis255
+table:
+    internal: all courses needed for student [A]
+    upper left (courses taken) [T]
+    upper right (courses needed not already taken) [N = A - T]
+    internal: all SVSU cs/cis courses [S]
+    lower left: courses available to take winter 2017 [C]
+    lower rightL not available winter 2017 [S - C]
+
+-->
+<html>
+<body>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+
+<h1>Course Planner Template</h1>
+<form>
+    <input type="radio" name="major" id = "cs" value="cs" onclick = "csOrCis();" checked> CS<br>
+    <input type="radio" name="major" id = "cis" value="cis" onclick="csOrCis();" > CIS<br>
+</form>
+<p>To use this course planner enter the courses you have taken one by one then add them to the box, make sure they are all upper case and the number separated from the prefix by one space. If a mistake is made, you must delete all.</p>
+<br>
+<table border="1">
+    <input type="text" id="add"/>
+    <button onclick ="addItem();">Add course</button>
+    <button onclick = "deleteCoursesTaken();">Delete Courses</button>
+    <tr>
+        <td>Courses Taken<br />
+            <ul id="T"></ul>
+        </td>
+        <td>courses needed<br/>
+            <select multiple  id = "N" style = "width: 300px; height: 300px;"></select>
+        </td>
+    </tr>
+    <tr>
+        <td>courses available <br>
+            <select multiple  id = "id02" style = "width: 300px; height: 300px;"></select>
+
+        </td>
+        <td>courses not available<br>
+            <select multiple  id = "Not" style = "width: 300px; height: 300px;"></select>
+        </td>
+    </tr>
+</table>
+<br/>
+<button onclick="showNeeded();">Show Courses Needed</button>
+
+</body>
+<head>
+    <script>
+        CISCourses = ["CS 105", "CS 116", "CS 146", "CS 216", "CIS 255", "CIS 301", "CIS 311", "CIS 333", "CIS 355",
+            "CIS 366", "CIS 386", "CIS 422", "CIS 424"];
+        CSCourses = ["CS 105", "CS 116", "CS 146", "CS 216", "CIS 255", "CS 316", "CS 331", "CIS 355", "CIS 357", "CS 401",
+            "CS 411", "CS 421", "CS 446", "CS 451", "CS 461", "CS 471"];
+
+        function csOrCis() {
+            if(document.getElementById('cs').checked){
+                return true;
+            }
+            else if (document.getElementById('cis').checked){
+                return false;
+            }
+        }
+
+        function deleteCoursesTaken() {
+            document.getElementById("T").innerHTML = "";
+        }
+
+        function refresh(box) {
+            for(var i = box.options.length - 1 ; i >= 0 ; i--)
+            {
+                box.remove(i);
+            }
+        }
+
+        function addTakenCoursesToArray() {
+            var list = document.getElementById('T').childNodes;
+            var takenArray = [];
+            for(var i=0;i < list.length; i++) {
+                var arrValue = list[i].innerHTML;
+                takenArray.push(arrValue);
+            }
+            return takenArray;
+        }
+
+
+        function showNeeded() {
+            refresh(document.getElementById("N"));
+            var takenArray = addTakenCoursesToArray();
+            if (csOrCis()) {
+                var courseList = CSCourses.filter(function (el) {
+                    return takenArray.indexOf(el) < 0;
+                });
+            }
+            else {
+                var courseList = CISCourses.filter(function (el) {
+                    return takenArray.indexOf(el) < 0;
+                });
+            }
+            var select = document.getElementById('N');
+
+            for (var i = 0; i <= courseList.length - 1; i++) {
+                var opt = document.createElement('option');
+                opt.value = courseList[i];
+                opt.innerHTML = courseList[i];
+                select.appendChild(opt);
+            }
+
+            refresh(document.getElementById('id02'));
+
+            coursesAvaliable = [];
+            coursesAvaliablePrefix = [];
+
+            var xmlhttp = new XMLHttpRequest();
+            var url = "https://api.svsu.edu/courses?prefix=CS&term=17/WI";
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var myArr = JSON.parse(xmlhttp.responseText);
+                    myFunction(myArr);
+                }
+            };
+
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+
+
+
+
+            var xmlhttp2 = new XMLHttpRequest();
+            var url2 = "https://api.svsu.edu/courses?prefix=CIS&term=17/WI";
+
+            xmlhttp2.onreadystatechange = function () {
+                if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+                    var myArr = JSON.parse(xmlhttp2.responseText);
+                    myFunction(myArr);
+                }
+            };
+
+            xmlhttp2.open("GET", url2, true);
+            xmlhttp2.send();
+
+        }
+        function addItem(){
+            var li = document.createElement("LI");
+            var input = document.getElementById("add");
+            li.innerHTML = input.value;
+            input.value = "";
+
+            document.getElementById("T").appendChild(li);
+        }
+
+        function myFunction(arr) {
+            var out = "";
+            var i;
+            for(i = 0; i < arr.courses.length; i++) {
+                var newP = document.createElement("option");
+                newP.setAttribute("value", i);
+                var newText=
+                        arr.courses[i].prefix + " "
+                        + arr.courses[i].courseNumber + " "
+                        + arr.courses[i].term + " "
+                        + arr.courses[i].meetingTimes[0].days + " "
+                        + arr.courses[i].meetingTimes[0].startTime + " "
+                        + arr.courses[i].meetingTimes[0].instructor;
+                coursesAvaliable.push(newText);
+                coursesAvaliablePrefix.push(arr.courses[i].prefix + " "
+                        + arr.courses[i].courseNumber);
+            }
+            var availableCourses = document.getElementById('id02');
+
+            for (var i = 0; i<=coursesAvaliable.length - 1; i++){
+                var opt = document.createElement('option');
+                opt.value = coursesAvaliable[i];
+                opt.innerHTML = coursesAvaliable[i];
+                availableCourses.appendChild(opt);
+            }
+
+        }
+
+
+
+
+    </script>
+</head>
+</html>

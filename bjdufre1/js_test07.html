@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+    <body>
+
+        <label>Enter a province</label>
+        <input type="text" id = "in1" onkeyup="isProvince();"/>
+
+        <p id = "out1"> Output goes here </p>
+        <script>
+
+            function isNumber() {
+                var x = document.getElementById("in1").value;
+                if(!isNaN(x)) {
+                    document.getElementById("out1").innerHTML = "Number";
+                }
+                else
+                    document.getElementById("out1").innerHTML = "Not a Number";
+            }
+
+            // Write a function to test whether or not something is a province of canada
+            function isProvince() {
+
+                var y = document.getElementById("in1").value.toLowerCase();
+                if(y == "alberta" || y == "british columbia" || y == "manitoba" || y == "new brunswick"
+                || y== "newfoundland and labrador" || y == "nova scotia" || y == "ontario" || y == "prince edward island"
+                || y== "quebec" || y == "saskatchewan" || y == "northwest territories" || y == "nunavut"
+                || y == "yukon territory"){
+                    document.getElementById("out1").innerHTML = "Province";
+                }
+                else{
+                    document.getElementById("out1").innerHTML = "Not a Province";
+                }
+
+            }
+
+        </script>
+    </body>
+</html>

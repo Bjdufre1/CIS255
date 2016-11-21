@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <body>
+	<head><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script></head>
+        <label>Enter a number</label>
+        <input type="number" id = "in1" onkeyup="onClick()"/>
+
+        <p id = "out1"> Output goes here </p>
+
+        <script>
+		$(document).ready(function(){
+    $("body").click(function(){
+        $(this).hide();
+    });
+});
+
+            function add2(a) {
+                return (a + 2);
+            }
+            function subtract4(a) {
+                return (a - 4);
+            }
+            function mod5(a) {
+                return (a % 5);
+            }
+            function power3(a) {
+                return (a^3);
+            }
+            function toString(a) {
+                return ((String)(a));
+            }
+            function onClick() {
+                var x = document.getElementById("in1").valueOf();
+                var y = document.getElementById("out1");
+                var array = [
+                        add2(x),
+                        subtract4(x),
+                        mod5(x),
+                        power3(x),
+                        toString(x)
+                ];
+                for(var i = 0; i < array.length; i++){
+                    var tn = array[i];
+                    y.appendChild(document.createElement("br"));
+                    y.appendChild(document.createTextNode(tn));
+                }
+            }
+
+        </script>
+
+    </body>
+</html>

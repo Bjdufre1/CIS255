@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<!-- code copied from w3schools -->
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#length, #width, #boardLengthInput, #boardWidthInput").keyup(function(){
+                var l = $("#length").val();
+                var w = $("#width").val();
+                var area = l * w;
+                boardLength = $("#boardLengthInput").val();
+                boardWidth = $("#boardWidthInput").val();
+                var boards= Math.ceil(area / (boardWidth * boardLength));
+                document.getElementById("numOfBoards").innerHTML = boards + " " + boardLength + " x " + boardWidth;
+
+            });
+        });
+
+    </script>
+</head>
+<body>
+
+    <h1>Calculate Materials for Deck</h1>
+    <form>
+        <h3>Board Length</h3>
+        <input type="number" id = "boardLengthInput" />
+        <h3>Board Width</h3>
+        <input type="number" id = "boardWidthInput"/>
+        <h3>Deck Length</h3>
+        <input type="number" id = "length" />
+        <h3>Deck Width</h3>
+        <input type="number" id = "width"/>
+
+        <br><br>You Need <span id = "numOfBoards">_____</span> Boards
+
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <button type="button" onclick="myObjectFun()">Click me!</button>
+        <script>
+
+            function myObjectFun() {
+                var car = "Fiat";
+                //JSON
+                var car1 = {
+                    type: "Fiat",
+                    model: "500",
+                    color: "White",
+                    odometer: function () {console.log(12345);}
+                    }
+
+                var car2 = {
+                    type: "Chevy",
+                    model: "Malibu",
+                    color: "Red"
+                };
+                var cars = [];
+                cars[0] = car1;
+                cars[1] = car2;
+                cars[2] = {
+                    type: "Buick",
+                    model: "LeSabre",
+                    color: "Black"
+                };
+                cars[3] = {
+                    type: "Lotus",
+                    model: "Elise",
+                    color: "Black"
+                };
+                for(var i =0; i < cars.length; i++) {
+                    document.write(cars[i].type + "</br>" + cars[i].model + "</br>" + cars[i].color + "</br></br>");
+                }
+                car1.odometer();
+            }
+
+        </script>
+
+
+    </body>
+</html>
