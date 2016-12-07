@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Program 04 - Widgets</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -142,21 +142,21 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+                <div class="fill" style="background-image:url('http://beersandbeans.com/wp-content/uploads/airplane-view.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 1</h2>
+                    <h2>Plane</h2>
                 </div>
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                <div class="fill" style="background-image:url('https://www.bhmpics.com/walls/golden_gautama_sleeping-other.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 2</h2>
+                    <h2>Buddah</h2>
                 </div>
             </div>
             <div class="item">
-                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                <div class="fill" style="background-image:url('https://rascandomelasbarbas.files.wordpress.com/2015/08/dismaland-banksy-2-1024x700.jpg');"></div>
                 <div class="carousel-caption">
-                    <h2>Caption 3</h2>
+                    <h2>Trucks</h2>
                 </div>
             </div>
         </div>
@@ -205,7 +205,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i> Free &amp; Open Source</h4>
+                        <h4><i class="fa fa-fw fa-gift"></i> Weather</h4>
                     </div>
                     <div class="panel-body">
 			
@@ -236,8 +236,7 @@
                         <h4><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="#" class="btn btn-default">Learn More</a>
+                        <div id="jqxWidget"></div>
                     </div>
                 </div>
             </div>
@@ -251,32 +250,32 @@
             </div>
             <div class="col-md-4 col-sm-6">
                 <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                    <img class="img-responsive img-portfolio img-hover" src="https://d3ttu1mwmobba5.cloudfront.net/content/uploads/2015/03/Tablet-Technology-Computer-Business-700x450.jpg" alt="">
                 </a>
             </div>
             <div class="col-md-4 col-sm-6">
                 <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                    <img class="img-responsive img-portfolio img-hover" src="https://d3ttu1mwmobba5.cloudfront.net/content/uploads/2013/07/Canary-Wharf-Buildings-London-700x450.jpg" alt="">
                 </a>
             </div>
             <div class="col-md-4 col-sm-6">
                 <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                    <img class="img-responsive img-portfolio img-hover" src="http://wearepcr.com/media/cloud-post-700x450.png" alt="">
                 </a>
             </div>
             <div class="col-md-4 col-sm-6">
                 <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                    <img class="img-responsive img-portfolio img-hover" src="http://www.commandfireapparatus.com/wp-content/uploads/2016/06/1992-Ford-rural-pumper-tanker-700x450.jpg" alt="">
                 </a>
             </div>
             <div class="col-md-4 col-sm-6">
                 <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                    <img class="img-responsive img-portfolio img-hover" src="http://www.revolutionarybehe.com/wp-content/uploads/2016/09/msu-700x450.jpg" alt="">
                 </a>
             </div>
             <div class="col-md-4 col-sm-6">
                 <a href="portfolio-item.html">
-                    <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                    <img class="img-responsive img-portfolio img-hover" src="https://s3.amazonaws.com/media.eremedia.com/uploads/2016/05/25131207/Snail-700x450.jpg" alt="">
                 </a>
             </div>
         </div>
@@ -348,7 +347,7 @@
     </script>
 	
 	
-	<script src="js/jquery.js"></script> <!-- gpcorser -->
+	<script src="js/jquery.js"></script> 
 	<!--
     <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
     -->
@@ -356,7 +355,18 @@
     <script type="text/javascript" src="../../jqwidgets/jqwidgets/jqxdraw.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqwidgets/jqxchart.core.js"></script>
     <script type="text/javascript" src="../../jqwidgets/jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqwidgets/globalization/globalize.js"></script>
+
     <script type="text/javascript">
+	$(document).ready(function () {                
+	// create jqxcalendar.
+	$("#jqxWidget").jqxCalendar({width: '100%', height: '100%'});
+	});
+	
         $(document).ready(function () {
             // prepare chart data as an array            
             var source =
@@ -428,6 +438,7 @@
             $('#chartContainer').jqxChart(settings);
 
         });
+		
     </script>
 
 </body>
